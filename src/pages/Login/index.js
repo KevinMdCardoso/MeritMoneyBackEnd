@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import { Container } from './styles';
 
 class Login extends Component {
@@ -8,7 +8,7 @@ class Login extends Component {
     render() {
         return (
             <Container>
-                <div>TEstes</div>
+                <Link to="/Home">Home</Link>
             </Container>
         );
     }

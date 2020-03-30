@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { primary, clean } from '../../styles/Paleta';
+import { primary, hover, clean, secundary } from '../../styles/Paleta';
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #eee;
+    background-color: ${primary};
     width: 100vw;
     height: 100vh;
 
@@ -36,7 +36,7 @@ export const Container = styled.div`
 
         input {
             margin-bottom: 10px;
-            border: 3px solid #ddd;
+            border: 2px solid ${secundary};
             border-radius: 15px;
             padding-left: 20px;
             height: 40px;
@@ -65,7 +65,7 @@ export const Container = styled.div`
             }
 
             &:hover {
-                background-color: ${primary};
+                background-color: ${hover};
                 opacity: 0.8;
             }
         }

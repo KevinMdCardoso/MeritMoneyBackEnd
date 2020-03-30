@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-
+import { dark } from './Paleta';
 export default createGlobalStyle`
 * {
     margin: 0;

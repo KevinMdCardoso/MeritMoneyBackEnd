@@ -8,8 +8,8 @@ export const Container = styled.div`
     background-color: ${primary};
     margin: 0;
     color: ${clean};
-    height: 30vh;
-    width: 100vw;
+    height: 20vh;
+    width: 100%;
 `;
 
 export const Usuario = styled.div`
@@ -70,7 +70,7 @@ export const Menu = styled.div`
         border-radius: 50%;
         border-color: ${secundary};
         border-width: 3px;
-        width: 45%;
+        width: 30%;
         height: 30%;
         margin: 10%;
         background-color: ${clean};

@@ -17,10 +17,10 @@ class Home extends Component {
             this.createData(3, 'Sergio Velhaço'),
             this.createData(4, 'Guilherme Careca'),
             this.createData(5, 'Vitor guaselli'),
-            this.createData(6, ' wgtw4eg w e gwegewgfgbfnghnm'),
-            this.createData(7, 'gewegewgewg eg ewgewg e'),
-            this.createData(8, 'fewf ew ew ewewge'),
-            this.createData(9, 'testette tretet'),
+            this.createData(6, 'Gustavo lokurada'),
+            this.createData(7, 'Lukas Alien'),
+            this.createData(8, 'mikael macedo'),
+            this.createData(9, 'Ze pequeno'),
         ];
 
         return (

@@ -11,9 +11,10 @@ import {
 export const Container = styled.div`
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
     background-color: ${brancoEscuro};
     margin: 0;
     padding: 10px 0;
+    min-height: 80vh;
 `;

@@ -27,7 +27,7 @@ class Home extends Component {
             <>
                 <MasterPage />
                 <Container>
-                    <Tabela rows={rows} />
+                    <Tabela dados={rows} />
                 </Container>
             </>
         );

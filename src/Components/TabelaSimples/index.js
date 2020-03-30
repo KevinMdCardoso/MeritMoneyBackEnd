@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -40,10 +42,11 @@ const useStyles = makeStyles({
     },
 });
 
-export default function SimpleTable() {
+export default function SimpleTable(props) {
+    console.log(props);
+    const rows = [];
+    props.dados.map(item => rows.push(item));
     const classes = useStyles();
-    const rows = this.props.rows;
-
     return (
         <TableContainer className={classes.table} component={Paper}>
             <Table

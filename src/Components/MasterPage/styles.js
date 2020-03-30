@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { primary, secundary, dark, clean, hover } from '../../styles/Paleta';
 
 export const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: blueviolet;
+    background-color: ${primary};
     margin: 0;
-
+    color: ${clean};
     height: 30vh;
     width: 100vw;
 `;
@@ -67,11 +68,19 @@ export const Menu = styled.div`
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        border-color: black;
+        border-color: ${secundary};
         border-width: 3px;
         width: 45%;
         height: 30%;
         margin: 10%;
-        background-color: white;
+        background-color: ${clean};
+        color: ${secundary};
+        &:hover {
+            background-color: ${hover};
+            cursor: pointer;
+            svg {
+                color: ${clean};
+            }
+        }
     }
 `;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from './styles';
 import MasterPage from '../../Components/MasterPage';
-import Tabela from '../../Components/TabelaSimples';
+import Tabela from '../../Components/TabelaSimplesDoacao';
 
 class Home extends Component {
     state = {};

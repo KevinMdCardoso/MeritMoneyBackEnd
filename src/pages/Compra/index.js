@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import MasterPage from '../../Components/MasterPage';
 import { Container } from './styles';
 
 class Compra extends Component {
@@ -7,9 +7,12 @@ class Compra extends Component {
 
     render() {
         return (
-            <Container>
-                <p>teste</p>
-            </Container>
+            <>
+                <MasterPage />
+                <Container>
+                    <p>teste</p>
+                </Container>
+            </>
         );
     }
 }

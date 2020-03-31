@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaCoins, FaUserCircle } from 'react-icons/fa';
 import { Container, Saldo, Usuario, Menu } from './styles';
 
@@ -36,7 +36,9 @@ class Home extends Component {
                 </Saldo>
                 <Menu>
                     <div>
-                        <FaShoppingCart />
+                        <Link to="/Compra">
+                            <FaShoppingCart />
+                        </Link>
                     </div>
                 </Menu>
             </Container>

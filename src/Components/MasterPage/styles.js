@@ -59,22 +59,28 @@ export const Menu = styled.div`
     justify-content: center;
     width: 10vw;
     height: 100%;
+
     svg {
         width: 40%;
         height: 60%;
     }
     div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: ${secundary};
+        }
+
         border-radius: 50%;
-        border-color: ${secundary};
-        border-width: 3px;
+        border: 2px solid ${secundary};
         width: 30%;
         height: 30%;
         margin: 10%;
         background-color: ${clean};
-        color: ${secundary};
+
         &:hover {
             background-color: ${hover};
             cursor: pointer;

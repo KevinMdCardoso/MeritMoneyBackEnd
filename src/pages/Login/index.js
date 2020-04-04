@@ -1,5 +1,6 @@
 /* eslint-disable import/order */
 import React, { Component } from 'react';
+import axios from 'axios';
 import logo from './moeda.png';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
@@ -7,6 +8,17 @@ import Button from '@material-ui/core/Button';
 
 class Login extends Component {
     state: {};
+
+    componentDidMount() {
+        this.consome();
+    }
+
+    consome = async () => {
+        const response = await axios.get(
+            'https://covid19-brazil-api.now.sh/api/report/v1'
+        );
+        console.log(response.data);
+    };
 
     render() {
         return (

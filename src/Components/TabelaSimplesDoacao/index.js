@@ -46,7 +46,6 @@ const useStyles = makeStyles({
 });
 
 export default function SimpleTable(props) {
-    console.log(props);
     const rows = [];
     props.dados.map(item => rows.push(item));
     const classes = useStyles();

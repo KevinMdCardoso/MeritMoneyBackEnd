@@ -13,13 +13,6 @@ class Login extends Component {
         this.consome();
     }
 
-    consome = async () => {
-        const response = await axios.get(
-            'https://covid19-brazil-api.now.sh/api/report/v1'
-        );
-        console.log(response.data);
-    };
-
     render() {
         return (
             <Container>

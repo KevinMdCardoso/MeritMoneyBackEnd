@@ -36,7 +36,7 @@ export const Container = styled.div`
         textarea {
             margin-bottom: 10px;
             border: 2px solid ${secundary};
-            border-radius: 15px;
+            border-radius: 12px;
             padding-left: 7px;
             height: 70%;
             min-width: 65%;
@@ -50,13 +50,14 @@ export const Container = styled.div`
         input {
             margin-bottom: 10px;
             border: 2px solid ${secundary};
-            border-radius: 15px;
+            border-radius: 12px;
             padding-left: 7px;
             height: 40px;
             max-width: 12%;
+            margin-right: 53%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;
-            text-align: right;
+            text-align: center;
             &:focus {
                 box-shadow: 0 0 0 0;
                 outline: 0;

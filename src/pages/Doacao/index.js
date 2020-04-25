@@ -12,16 +12,14 @@ import { Container, InfoUsu, Formulario } from './styles';
 class Doacao extends Component {
     constructor(props) {
         super(props);
+        this.state = { quantidadeDoado: 0 };
     }
 
-    CriaDoacao = () => {
-        console.log('Realizando doaçao.');
+    alteraValor = e => {
+        this.setState({ quantidadeDoado: e.target.value });
     };
 
     render() {
-        console.log(this.props);
-        console.log(this.props.match.params.nome);
-
         return (
             <>
                 <MasterPage />
@@ -32,13 +30,20 @@ class Doacao extends Component {
                             <h2>{this.props.match.params.nome}</h2>
                         </InfoUsu>
                         <Formulario>
-                            <input type="number" placeholder="Valor Doado." />
+                            <input
+                                type="number"
+                                placeholder="Doação"
+                                onChange={this.alteraValor}
+                            />
                             <textarea
                                 type="text"
                                 placeholder="Qual motivo para dar essas moedas ao colaborador?"
                             />
                         </Formulario>
-                        <Link to="/Home" onClick={this.CriaDoacao}>
+                        <Link
+                            to={`/ConfirmaDoacao/${this.props.match.params.nome}/${this.state.quantidadeDoado}`}
+                            onClick={this.CriaDoacao}
+                        >
                             <Button>Entrar</Button>
                         </Link>
                     </form>

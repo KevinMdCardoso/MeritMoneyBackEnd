@@ -9,10 +9,6 @@ import Button from '@material-ui/core/Button';
 class Login extends Component {
     state: {};
 
-    componentDidMount() {
-        this.consome();
-    }
-
     render() {
         return (
             <Container>

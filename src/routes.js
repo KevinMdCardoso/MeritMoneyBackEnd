@@ -19,6 +19,7 @@ export default function Routes() {
                     exact
                     component={ConfirmaDoacao}
                 />
+                <Route path="*" component={Login} />
             </Switch>
         </BrowserRouter>
     );

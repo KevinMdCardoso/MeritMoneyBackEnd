@@ -1,6 +1,5 @@
 /* eslint-disable import/order */
 import React, { Component } from 'react';
-import axios from 'axios';
 import logo from './moeda.png';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';

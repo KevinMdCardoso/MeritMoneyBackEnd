@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from './styles';
-import MasterPage from '../../Components/MasterPage';
+import MasterPageGestor from '../../Components/MasterPageGestor';
 import Tabela from '../../Components/TabelaSimplesDoacaoGestor';
 
 class Home extends Component {
@@ -34,7 +34,7 @@ class Home extends Component {
 
         return (
             <>
-                <MasterPage />
+                <MasterPageGestor />
                 <Container>
                     <Tabela dados={rows} />
                 </Container>

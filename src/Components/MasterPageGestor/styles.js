@@ -31,33 +31,12 @@ export const Usuario = styled.div`
     }
 `;
 
-export const Saldo = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 55vw;
-    height: 100%;
-
-    div {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 100%;
-    }
-
-    h1 {
-        margin-left: 25px;
-    }
-`;
-
 export const Menu = styled.div`
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 10vw;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 80vw;
     height: 100%;
 
     svg {
@@ -69,16 +48,16 @@ export const Menu = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 100%;
+            height: 100%;
             color: ${secundary};
         }
 
         border-radius: 50%;
         border: 2px solid ${secundary};
-        width: 30%;
-        height: 30%;
-        margin: 10%;
+        width: 45px;
+        height: 45px;
+        margin: 4%;
         background-color: ${clean};
 
         &:hover {

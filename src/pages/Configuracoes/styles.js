@@ -17,7 +17,7 @@ export const Container = styled.div`
     background-color: ${brancoEscuro};
     margin: 0;
     padding: 10px 0;
-    min-height: 80vh;
+    min-height: 76vh;
 `;
 
 export const Detalhes = styled.div`
@@ -45,8 +45,23 @@ export const Cabecalho = styled.div`
     width: 100%;
     margin-bottom: 20px;
     padding-top: 15px;
-    p {
+    h1 {
         padding-top: 10px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+    input {
+        border: 2px solid ${secundary};
+        border-radius: 12px;
+        height: 40px;
+        max-width: 12%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        text-align: center;
+        &:focus {
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
     }
 `;
 
@@ -82,30 +97,6 @@ export const Botoes = styled.div`
             background-color: ${hover};
             opacity: 0.8;
         }
-    }
-`;
-
-export const SetaValor = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 40%;
-    svg {
-        width: 25px;
-        height: 25px;
-    }
-`;
-
-export const Perfil = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 40%;
-    svg {
-        width: 65px;
-        height: 65px;
     }
 `;
 

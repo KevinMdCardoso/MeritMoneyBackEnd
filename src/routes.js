@@ -13,6 +13,21 @@ import ConfirmaAceitarDoacao from './pages/ConfirmaAceitarDoacao';
 import NegarDoacaoFinalizada from './pages/NegarDoacaoFinalizada';
 import AceitarDoacaoFinalizada from './pages/AceitarDoacaoFinalizada';
 import DetalhesDoacao from './pages/DetalhesDoacao';
+import Configuracoes from './pages/Configuracoes';
+import ConfiguracaoFinalizada from './pages/ConfiguracaoFinalizada';
+import CompraGestor from './pages/CompraGestor';
+import DescriçaoMomento from './pages/DescriçaoMomento';
+import AlteracaoMomentoFinaliza from './pages/AlteracaoMomentoFinaliza';
+import DeletarMomentoFinaliza from './pages/DeletarMomentoFinaliza';
+import NovoMomentoFinaliza from './pages/NovoMomentoFinaliza';
+import NovoMomento from './pages/NovoMomento';
+import Colaboradores from './pages/Colaboradores';
+import ConfirmaDeletarUsuario from './pages/ConfirmaDeletarUsuario';
+import DeletarColaboradorFinalizada from './pages/DeletarColaboradorFinalizada';
+import DescriçaoColaborador from './pages/DescriçaoColaborador';
+import AlteracaoColaboradorFinaliza from './pages/AlteracaoColaboradorFinaliza';
+import NovoColaborador from './pages/NovoColaborador';
+import NovoColaboradorFinaliza from './pages/NovoColaboradorFinaliza';
 
 export default function Routes() {
     return (
@@ -23,6 +38,64 @@ export default function Routes() {
                 <Route path="/HomeGestor" exact component={HomeGestor} />
                 <Route path="/Doacao/:id/:nome" exact component={Doacao} />
                 <Route path="/Compra" exact component={Compra} />
+                <Route path="/Colaboradores" exact component={Colaboradores} />
+                <Route
+                    path="/ConfirmaDeletarUsuario/:idUsuario/:nome"
+                    exact
+                    component={ConfirmaDeletarUsuario}
+                />
+                <Route
+                    path="/DeletarColaboradorFinalizada"
+                    exact
+                    component={DeletarColaboradorFinalizada}
+                />
+                <Route
+                    path="/AlteracaoColaboradorFinaliza"
+                    exact
+                    component={AlteracaoColaboradorFinaliza}
+                />
+                <Route
+                    path="/DescriçaoColaborador/:idUsuario"
+                    exact
+                    component={DescriçaoColaborador}
+                />
+                <Route
+                    path="/NovoColaborador"
+                    exact
+                    component={NovoColaborador}
+                />
+                <Route
+                    path="/NovoColaboradorFinaliza"
+                    exact
+                    component={NovoColaboradorFinaliza}
+                />
+                <Route path="/CompraGestor" exact component={CompraGestor} />
+                <Route
+                    path="/AlteracaoMomentoFinaliza"
+                    exact
+                    component={AlteracaoMomentoFinaliza}
+                />{' '}
+                <Route path="/NovoMomento" exact component={NovoMomento} />
+                <Route
+                    path="/NovoMomentoFinaliza"
+                    exact
+                    component={NovoMomentoFinaliza}
+                />
+                <Route
+                    path="/DeletarMomentoFinaliza"
+                    exact
+                    component={DeletarMomentoFinaliza}
+                />
+                <Route
+                    path="/DescriçaoMomento/:idMomento"
+                    exact
+                    component={DescriçaoMomento}
+                />
+                <Route
+                    path="/ConfiguracaoFinalizada"
+                    exact
+                    component={ConfiguracaoFinalizada}
+                />
                 <Route
                     path="/DetalhesDoacao/:idDoacao"
                     exact
@@ -63,6 +136,7 @@ export default function Routes() {
                     exact
                     component={AceitarDoacaoFinalizada}
                 />
+                <Route path="/Configuracoes" exact component={Configuracoes} />
                 <Route path="*" component={Login} />
             </Switch>
         </BrowserRouter>

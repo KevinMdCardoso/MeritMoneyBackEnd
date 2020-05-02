@@ -11,7 +11,7 @@ import {
     Cabecalho,
     Botoes,
 } from './styles';
-import MasterPage from '../../Components/MasterPage';
+import MasterPage from '../../Components/MasterPageGestor';
 
 class DetalhesDoacao extends Component {
     state = {};
@@ -35,11 +35,11 @@ class DetalhesDoacao extends Component {
                             </Perfil>
                             <SetaValor>
                                 <FaArrowRight />
-                                <p>Valor: 10</p>
+                                <p>Doado 10 collaboratorCoin</p>
                             </SetaValor>
                             <Perfil>
                                 <FaUserCircle />
-                                <h1>kevin cardoso</h1>
+                                <h1>Jader Rampa</h1>
                             </Perfil>
                         </Cabecalho>
                         <h2>Motivo da doação:</h2>

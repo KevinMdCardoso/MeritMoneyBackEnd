@@ -55,22 +55,23 @@ export const Saldo = styled.div`
 export const Menu = styled.div`
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     width: 10vw;
     height: 100%;
 
     svg {
-        width: 40%;
-        height: 60%;
+        width: 45;
+        height: 45;
     }
+
     div {
         a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 100%;
+            height: 100%;
             color: ${secundary};
         }
 

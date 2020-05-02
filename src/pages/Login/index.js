@@ -6,7 +6,21 @@ import { Container } from './styles';
 import Button from '@material-ui/core/Button';
 
 class Login extends Component {
-    state: {};
+    constructor(props) {
+        super(props);
+        this.state = {
+            login: '',
+            pushTela: 'Home',
+        };
+    }
+
+    alteraLogin = e => {
+        if (e.target.value === 'gestor') {
+            this.setState({ login: e.target.value, pushTela: 'HomeGestor' });
+        } else {
+            this.setState({ login: e.target.value, pushTela: 'Home' });
+        }
+    };
 
     render() {
         return (
@@ -14,9 +28,14 @@ class Login extends Component {
                 <form>
                     <span>Merit Money</span>
                     <img src={logo} alt="logo" />
-                    <input type="text" placeholder="Email" />
+                    <input
+                        type="text"
+                        placeholder="Login"
+                        value={this.state.login}
+                        onChange={this.alteraLogin}
+                    />
                     <input type="password" placeholder="Senha" />
-                    <Link to="/HomeGestor">
+                    <Link to={`/${this.state.pushTela}`}>
                         <Button>Entrar</Button>
                     </Link>
                 </form>

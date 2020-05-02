@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaCoins, FaUserCircle } from 'react-icons/fa';
 import { Container, Saldo, Usuario, Menu } from './styles';
+import { IoMdExit } from 'react-icons/io';
 
 class Home extends Component {
     state = {
@@ -38,6 +39,11 @@ class Home extends Component {
                     <div>
                         <Link to="/Compra">
                             <FaShoppingCart />
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to="/Login">
+                            <IoMdExit />
                         </Link>
                     </div>
                 </Menu>

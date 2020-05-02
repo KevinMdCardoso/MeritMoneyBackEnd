@@ -7,6 +7,7 @@ import {
     FaUsersCog,
     FaUserPlus,
 } from 'react-icons/fa';
+import { IoMdExit } from 'react-icons/io';
 import { Container, Usuario, Menu } from './styles';
 
 class Home extends Component {
@@ -45,6 +46,11 @@ class Home extends Component {
                     <div>
                         <Link to="/Configuracoes">
                             <FaCogs />
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to="/Login">
+                            <IoMdExit />
                         </Link>
                     </div>
                 </Menu>

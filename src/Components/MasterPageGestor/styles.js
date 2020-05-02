@@ -57,7 +57,7 @@ export const Menu = styled.div`
         border: 2px solid ${secundary};
         width: 45px;
         height: 45px;
-        margin: 4%;
+        margin: 1%;
         background-color: ${clean};
 
         &:hover {

@@ -16,8 +16,8 @@ class Login extends Component {
                     <img src={logo} alt="logo" />
                     <input type="text" placeholder="Email" />
                     <input type="password" placeholder="Senha" />
-                    <Link to="/Home">
-                        <Button to="/Home">Entrar</Button>
+                    <Link to="/HomeGestor">
+                        <Button>Entrar</Button>
                     </Link>
                 </form>
             </Container>

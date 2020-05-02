@@ -85,8 +85,37 @@ export const Card = styled.div`
         opacity: 0.8;
     }
 `;
+export const CardAdd = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: ${clean};
+    width: 100%;
+    height: 100%;
+    border: 1px solid ${brancoEscuro};
 
-export const CardGrande = styled.div`
+    div {
+        display: flex;
+        flex-direction: column;
+        margin: 0 15px 0 15px;
+        h1 {
+            font-size: 16px;
+        }
+    }
+    svg {
+        width: 15%;
+        height: 100%;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${hover};
+        color: ${clean};
+        opacity: 0.8;
+    }
+`;
+export const CardAddGrande = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -16,7 +16,7 @@ export const Container = styled.div`
     background-color: ${brancoEscuro};
     margin: 0;
     padding: 4px 0;
-    min-height: 80vh;
+    min-height: 76vh;
 
     form {
         display: flex;
@@ -41,22 +41,6 @@ export const Container = styled.div`
             min-width: 65%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;
-            &:focus {
-                box-shadow: 0 0 0 0;
-                outline: 0;
-            }
-        }
-        input {
-            margin-bottom: 10px;
-            border: 2px solid ${secundary};
-            border-radius: 12px;
-            padding-left: 7px;
-            height: 40px;
-            max-width: 12%;
-            margin-right: 53%;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 16px;
-            text-align: center;
             &:focus {
                 box-shadow: 0 0 0 0;
                 outline: 0;
@@ -125,9 +109,29 @@ export const InfoUsu = styled.div`
 
 export const Formulario = styled.div`
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 100%;
     height: 50%;
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-width: 65%;
+        input {
+            border: 2px solid ${secundary};
+            border-radius: 12px;
+            height: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+
+            &:focus {
+                box-shadow: 0 0 0 0;
+                outline: 0;
+            }
+        }
+    }
 `;

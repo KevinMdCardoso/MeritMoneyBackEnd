@@ -1,23 +1,25 @@
 /* eslint-disable import/order */
 import React, { Component } from 'react';
-import axios from 'axios';
 import logo from './moeda.png';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import Button from '@material-ui/core/Button';
 
 class Login extends Component {
-    state: {};
-
-    componentDidMount() {
-        this.consome();
+    constructor(props) {
+        super(props);
+        this.state = {
+            login: '',
+            pushTela: 'Home',
+        };
     }
 
-    consome = async () => {
-        const response = await axios.get(
-            'https://covid19-brazil-api.now.sh/api/report/v1'
-        );
-        console.log(response.data);
+    alteraLogin = e => {
+        if (e.target.value === 'gestor') {
+            this.setState({ login: e.target.value, pushTela: 'HomeGestor' });
+        } else {
+            this.setState({ login: e.target.value, pushTela: 'Home' });
+        }
     };
 
     render() {
@@ -26,10 +28,15 @@ class Login extends Component {
                 <form>
                     <span>Merit Money</span>
                     <img src={logo} alt="logo" />
-                    <input type="text" placeholder="Email" />
+                    <input
+                        type="text"
+                        placeholder="Login"
+                        value={this.state.login}
+                        onChange={this.alteraLogin}
+                    />
                     <input type="password" placeholder="Senha" />
-                    <Link to="/Home">
-                        <Button to="/Home">Entrar</Button>
+                    <Link to={`/${this.state.pushTela}`}>
+                        <Button>Entrar</Button>
                     </Link>
                 </form>
             </Container>

@@ -11,13 +11,14 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AddIcon from '@material-ui/icons/Add';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaSistrix, FaArrowRight, FaCheck, FaPlus } from 'react-icons/fa';
 import { hover, dark } from '../../styles/Paleta';
 
 const useStyles = makeStyles({
     table: {
         minWidth: 300,
-        maxWidth: 700,
+        maxWidth: 900,
+        overflow: 'hidden',
     },
     centraliza: {
         textAlign: 'center',
@@ -25,8 +26,20 @@ const useStyles = makeStyles({
     svg: {
         display: 'flex',
         margin: 'auto',
-        width: '50px',
-        height: '40px',
+        width: '30px',
+        height: '20px',
+        color: dark,
+        '&:hover': {
+            cursor: 'pointer',
+            color: hover,
+        },
+    },
+    svgRotacao: {
+        transform: 'rotate(45deg)',
+        display: 'flex',
+        margin: 'auto',
+        width: '30px',
+        height: '20px',
         color: dark,
         '&:hover': {
             cursor: 'pointer',
@@ -36,12 +49,9 @@ const useStyles = makeStyles({
     svgNoHover: {
         display: 'flex',
         margin: 'auto',
-        width: '50px',
-        height: '40px',
+        width: '30px',
+        height: '20px',
         color: dark,
-    },
-    aumentaNome: {
-        width: '66%',
     },
 });
 
@@ -58,29 +68,41 @@ export default function SimpleTable(props) {
             >
                 <TableHead>
                     <TableRow>
-                        <TableCell> </TableCell>
-                        <TableCell className={classes.aumentaNome}>
+                        <TableCell className={classes.centraliza}>
                             Nome
                         </TableCell>
                         <TableCell className={classes.centraliza}>
-                            Doar
+                            Perfil
+                        </TableCell>
+                        <TableCell className={classes.centraliza}>
+                            Deletar
+                        </TableCell>
+                        <TableCell className={classes.centraliza}>
+                            Detalhes
                         </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map(row => (
                         <TableRow key={row.idUsuario}>
-                            <TableCell>
-                                <FaUserCircle className={classes.svgNoHover} />
-                            </TableCell>
-                            <TableCell className={classes.aumentaNome}>
+                            <TableCell className={classes.centraliza}>
                                 {row.nome}
                             </TableCell>
-                            <TableCell>
+                            <TableCell className={classes.centraliza}>
+                                {row.perfil}
+                            </TableCell>
+                            <TableCell className={classes.centraliza}>
                                 <Link
-                                    to={`/Doacao/${row.idUsuario}/${row.nome}`}
+                                    to={`/ConfirmaDeletarUsuario/${row.idUsuario}/${row.nome}`}
                                 >
-                                    <AddIcon className={classes.svg} />
+                                    <FaPlus className={classes.svgRotacao} />
+                                </Link>
+                            </TableCell>
+                            <TableCell className={classes.centraliza}>
+                                <Link
+                                    to={`/DescriçaoColaborador/${row.idUsuario}`}
+                                >
+                                    <FaSistrix className={classes.svg} />
                                 </Link>
                             </TableCell>
                         </TableRow>

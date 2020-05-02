@@ -16,7 +16,7 @@ export const Container = styled.div`
     background-color: ${brancoEscuro};
     margin: 0;
     padding: 4px 0;
-    min-height: 80vh;
+    min-height: 76vh;
 
     form {
         display: flex;
@@ -28,10 +28,6 @@ export const Container = styled.div`
         background-color: ${clean};
         border-radius: 20px;
 
-        img {
-            height: 50px;
-            margin: 30px 0;
-        }
         textarea {
             margin-bottom: 10px;
             border: 2px solid ${secundary};
@@ -46,48 +42,40 @@ export const Container = styled.div`
                 outline: 0;
             }
         }
-        input {
-            margin-bottom: 10px;
-            border: 2px solid ${secundary};
-            border-radius: 12px;
-            padding-left: 7px;
-            height: 40px;
-            max-width: 12%;
-            margin-right: 53%;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 16px;
-            text-align: center;
-            &:focus {
-                box-shadow: 0 0 0 0;
-                outline: 0;
-            }
-        }
+    }
+`;
 
-        button {
-            margin: 20px 0;
-            background-color: ${primary};
-            color: ${clean};
-            border-radius: 20px;
-            width: 100%;
+export const Botoes = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px 5px;
+
+    a {
+        text-decoration: none;
+        color: ${clean};
+        font-size: 15px;
+        width: 25%;
+        height: 40px;
+    }
+
+    button {
+        background-color: ${primary};
+        color: ${clean};
+        border-radius: 20px;
+        width: 100%;
+        border: 0 none;
+        cursor: pointer;
+        &:focus {
+            box-shadow: 0 0 0 0;
             border: 0 none;
-            cursor: pointer;
-
-            &:focus {
-                box-shadow: 0 0 0 0;
-                border: 0 none;
-                outline: 0;
-            }
-
-            &:hover {
-                background-color: ${hover};
-                opacity: 0.8;
-            }
+            outline: 0;
         }
-
-        a {
-            color: ${clean};
-            text-decoration: none;
-            width: 50%;
+        &:hover {
+            background-color: ${hover};
+            opacity: 0.8;
         }
     }
 `;
@@ -109,25 +97,42 @@ export const Voltar = styled.div`
     }
 `;
 
-export const InfoUsu = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-    width: 100%;
-    height: 40%;
-    padding: 10px 0;
-    svg {
-        width: 20%;
-        height: 100%;
-    }
-`;
-
 export const Formulario = styled.div`
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 50%;
+    height: 65%;
+    padding-top: 30px;
+
+    input {
+        border: 2px solid ${secundary};
+        border-radius: 12px;
+        height: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        text-align: left;
+        margin-bottom: 15px;
+        width: 80%;
+
+        &:focus {
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
+    }
+    select {
+        border: 2px solid ${secundary};
+        border-radius: 12px;
+        height: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        text-align: left;
+        margin-bottom: 15px;
+        width: 80%;
+
+        &:focus {
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
+    }
 `;

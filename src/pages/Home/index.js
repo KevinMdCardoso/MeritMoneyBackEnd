@@ -14,7 +14,6 @@ class Home extends Component {
         const rows = [
             this.createData(1, 'Eduardo Pires Infra'),
             this.createData(2, 'Kevin Machado Cardoso'),
-
             this.createData(3, 'Sergio Velhaço'),
             this.createData(4, 'Guilherme Careca'),
             this.createData(5, 'Vitor guaselli'),

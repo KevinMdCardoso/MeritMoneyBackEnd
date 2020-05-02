@@ -22,27 +22,34 @@ class Compra extends Component {
                         </Link>
                         <Linha>
                             <Card>
-                                <FaGrinBeam />
-                                <div>
-                                    <h1>Ingreço para cinema</h1>
-                                    <h1>Valor: 30</h1>
-                                </div>
+                                <Link to={`/ConfirmaCompra/MomentoFeliz/30`}>
+                                    <FaGrinBeam />
+                                    <div>
+                                        <h1>Ingreço para cinema</h1>
+                                        <h1>Valor: 30</h1>
+                                    </div>
+                                </Link>
                             </Card>
+
                             <Card>
-                                <FaGrinBeam />
-                                <div>
-                                    <h1>Ingreço para cinema</h1>
-                                    <h1>Valor: 30</h1>
-                                </div>
+                                <Link to={`/ConfirmaCompra/MomentoFeliz/30`}>
+                                    <FaGrinBeam />
+                                    <div>
+                                        <h1>Ingreço para cinema</h1>
+                                        <h1>Valor: 30</h1>
+                                    </div>{' '}
+                                </Link>
                             </Card>
                         </Linha>
                         <Linha>
                             <CardGrande>
-                                <FaGrinBeam />
-                                <div>
-                                    <h1>Ingreço para cinema</h1>
-                                    <h1>Valor: 30</h1>
-                                </div>
+                                <Link to={`/ConfirmaCompra/MomentoFeliz/30`}>
+                                    <FaGrinBeam />
+                                    <div>
+                                        <h1>Ingreço para cinema</h1>
+                                        <h1>Valor: 30</h1>
+                                    </div>
+                                </Link>
                             </CardGrande>
                         </Linha>
                     </Tabela>

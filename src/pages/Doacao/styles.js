@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {
     primary,
     secundary,
-    dark,
     clean,
     hover,
     brancoEscuro,
@@ -16,7 +15,7 @@ export const Container = styled.div`
     flex-direction: row;
     background-color: ${brancoEscuro};
     margin: 0;
-    padding: 10px 0;
+    padding: 4px 0;
     min-height: 80vh;
 
     form {
@@ -89,6 +88,23 @@ export const Container = styled.div`
             color: ${clean};
             text-decoration: none;
             width: 50%;
+        }
+    }
+`;
+
+export const Voltar = styled.div`
+    width: 100vw;
+    background-color: #e3e3e3;
+    padding-top: 4px;
+    a {
+        margin-left: 24.5%;
+        display: flex;
+        flex-direction: row;
+        color: ${primary};
+        text-decoration: none;
+        white-space: nowrap;
+        svg {
+            margin-right: 7px;
         }
     }
 `;

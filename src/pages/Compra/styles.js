@@ -23,7 +23,6 @@ export const Container = styled.div`
 export const Tabela = styled.div`
     display: flex;
     flex-direction: column;
-
     width: 65vw;
     min-height: 20vh;
 
@@ -46,6 +45,14 @@ export const Linha = styled.div`
     background-color: ${clean};
     width: 100%;
     height: 15vh;
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        color: ${dark};
+    }
 `;
 
 export const Card = styled.div`
@@ -54,9 +61,10 @@ export const Card = styled.div`
     justify-content: center;
     align-items: center;
     background-color: ${clean};
-    width: 50%;
+    width: 100%;
     height: 100%;
     border: 1px solid ${brancoEscuro};
+
     div {
         display: flex;
         flex-direction: column;
@@ -87,23 +95,27 @@ export const CardGrande = styled.div`
     width: 100%;
     height: 100%;
     border: 1px solid ${brancoEscuro};
-    div {
-        display: flex;
-        flex-direction: column;
-        margin: 0 15px 0 15px;
-        h1 {
-            font-size: 16px;
-        }
-    }
-    svg {
-        width: 8%;
+    a {
+        width: 100%;
         height: 100%;
-    }
+        div {
+            display: flex;
+            flex-direction: column;
+            margin: 0 15px 0 15px;
+            h1 {
+                font-size: 16px;
+            }
+        }
+        svg {
+            width: 8%;
+            height: 100%;
+        }
 
-    &:hover {
-        cursor: pointer;
-        background-color: ${hover};
-        color: ${clean};
-        opacity: 0.8;
+        &:hover {
+            cursor: pointer;
+            background-color: ${hover};
+            color: ${clean};
+            opacity: 0.8;
+        }
     }
 `;

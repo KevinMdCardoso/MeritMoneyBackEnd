@@ -6,7 +6,7 @@ import { Container } from './styles';
 import Button from '@material-ui/core/Button';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class ConfirmaDoacao extends Component {
+class ConfirmaFinalizada extends Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
@@ -18,16 +18,17 @@ class ConfirmaDoacao extends Component {
                 <form>
                     <FaCheck />
                     <span>
-                        Sua doação de {this.props.match.params.quantidadeDoacao}{' '}
-                        ao colega {this.props.match.params.nome} foi cadastrada
-                        com sucesso
+                        Sua compra foi registrada, questione seu gestor para
+                        mais informações.
                     </span>
-                    <Link to="/Home">
-                        <Button>OK</Button>
-                    </Link>
+                    <div>
+                        <Link to="/Home">
+                            <Button>Ok</Button>
+                        </Link>
+                    </div>
                 </form>
             </Container>
         );
     }
 }
-export default ConfirmaDoacao;
+export default ConfirmaFinalizada;

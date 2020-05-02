@@ -3,11 +3,11 @@
 /* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaArrowLeft } from 'react-icons/fa';
 import Button from '@material-ui/core/Button';
 
 import MasterPage from '../../Components/MasterPage';
-import { Container, InfoUsu, Formulario } from './styles';
+import { Container, InfoUsu, Formulario, Voltar } from './styles';
 
 class Doacao extends Component {
     constructor(props) {
@@ -23,6 +23,12 @@ class Doacao extends Component {
         return (
             <>
                 <MasterPage />
+                <Voltar>
+                    <Link to="/home">
+                        <FaArrowLeft />
+                        <p>Voltar</p>
+                    </Link>
+                </Voltar>
                 <Container>
                     <form>
                         <InfoUsu>

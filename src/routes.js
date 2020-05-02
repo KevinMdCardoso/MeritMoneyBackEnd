@@ -5,7 +5,8 @@ import Login from './pages/Login';
 import Doacao from './pages/Doacao';
 import Compra from './pages/Compra';
 import ConfirmaDoacao from './pages/ConfirmaDoacao';
-
+import ConfirmaCompra from './pages/ConfirmaCompra';
+import CompraFinalizada from './pages/CompraFinalizada';
 export default function Routes() {
     return (
         <BrowserRouter>
@@ -18,6 +19,16 @@ export default function Routes() {
                     path="/ConfirmaDoacao/:nome/:quantidadeDoacao"
                     exact
                     component={ConfirmaDoacao}
+                />
+                <Route
+                    path="/ConfirmaCompra/:momento/:valor"
+                    exact
+                    component={ConfirmaCompra}
+                />
+                <Route
+                    path="/CompraFinalizada"
+                    exact
+                    component={CompraFinalizada}
                 />
                 <Route path="*" component={Login} />
             </Switch>

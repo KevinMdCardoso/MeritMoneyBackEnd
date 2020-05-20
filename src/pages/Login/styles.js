@@ -16,6 +16,7 @@ export const Container = styled.div`
         font-size: 15px;
         min-width: 65%;
         height: 40px;
+        padding-bottom: 27vh;
     }
 
     form {
@@ -24,14 +25,16 @@ export const Container = styled.div`
         justify-content: center;
         align-items: center;
         width: 40%;
-        height: 40%;
+        height: 50%;
         background-color: ${clean};
         border-radius: 20px;
         min-height: 350px;
 
         img {
-            height: 50px;
+            height: 70%;
             margin: 30px 0;
+            border-radius: 10%;
+            /* padding-bottom: 100px; */
         }
 
         input {
@@ -39,7 +42,7 @@ export const Container = styled.div`
             border: 2px solid ${secundary};
             border-radius: 15px;
             padding-left: 20px;
-            height: 40px;
+            min-height: 40px;
             min-width: 65%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;

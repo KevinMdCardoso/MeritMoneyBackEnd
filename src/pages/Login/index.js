@@ -1,6 +1,6 @@
 /* eslint-disable import/order */
 import React, { Component } from 'react';
-import logo from './moeda.png';
+import logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import Button from '@material-ui/core/Button';
@@ -26,15 +26,19 @@ class Login extends Component {
         return (
             <Container>
                 <form>
-                    <span>Merit Money</span>
                     <img src={logo} alt="logo" />
                     <input
+                        id="login"
                         type="text"
                         placeholder="Login"
                         value={this.state.login}
                         onChange={this.alteraLogin}
                     />
-                    <input type="password" placeholder="Senha" />
+                    <input
+                        id="loginSenha"
+                        type="password"
+                        placeholder="Senha"
+                    />
                     <Link to={`/${this.state.pushTela}`}>
                         <Button>Entrar</Button>
                     </Link>

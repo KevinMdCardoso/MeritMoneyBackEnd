@@ -13,9 +13,13 @@ class ConfirmaCompra extends Component {
         super(props);
     }
 
+    enviaEmailSolicitandoPremio = email => {
+        console.log('Ainda não temos procedimento para envio de email.');
+    };
+
     debitaConta = usuario => {
         const idLogado = localStorage.getItem('idLogado');
-        const response2 = Api.put(`usuario/${idLogado}`, {
+        const response = Api.put(`usuario/${idLogado}`, {
             id: usuario.id,
             nome: usuario.nome,
             login: usuario.login,
@@ -28,9 +32,10 @@ class ConfirmaCompra extends Component {
             collaboratorCoin: usuario.collaboratorCoin,
             skillCoin: usuario.skillCoin,
         }).then(
-            response2 => {
+            response => {
                 localStorage.setItem('SaldoSkill', usuario.skillCoin);
                 //Envio do email
+                this.enviaEmailSolicitandoPremio(usuario.email);
             },
             error => {
                 console.log(error);
@@ -41,15 +46,12 @@ class ConfirmaCompra extends Component {
     compra = () => {
         console.log('teste');
         const idLogado = localStorage.getItem('idLogado');
-        let SaldoSkill = 0;
         let usuario = [];
         //consulta para pegar infos de usuario
         const response = Api.get(`usuario/${idLogado}`).then(
             response => {
                 if (response.status === 200) {
-                    console.log(response.data);
                     usuario = response.data;
-                    console.log(usuario);
                     usuario.skillCoin =
                         response.data.skillCoin - this.props.match.params.valor;
                     //Debitando valor da compra

@@ -9,15 +9,50 @@ import {
 } from 'react-icons/fa';
 import { IoMdExit } from 'react-icons/io';
 import { Container, Usuario, Menu } from './styles';
+import Api from '../../Services/api';
 
 class Home extends Component {
-    state = {
-        UsuarioNome: '',
-    };
+    state = {};
 
     constructor(props) {
         super(props);
-        this.state.UsuarioNome = 'Kevin Cardoso';
+
+        const UsuarioNome = localStorage.getItem('UsuarioNome');
+
+        if (UsuarioNome !== null) {
+            this.state.UsuarioNome = UsuarioNome;
+        }
+    }
+
+    componentDidMount() {
+        const UsuarioNome = localStorage.getItem('UsuarioNome');
+        if (UsuarioNome === null) {
+            const idLogado = localStorage.getItem('idLogado');
+            const response = Api.get(`usuario/${idLogado}`).then(
+                response => {
+                    if (response.status === 200) {
+                        this.state.UsuarioNome = response.data.nome;
+                        localStorage.setItem('UsuarioNome', response.data.nome);
+                    }
+                },
+                error => {
+                    if (error === 404) {
+                        this.setState({
+                            message:
+                                'Não foi possível conectar ao banco de dados',
+                        });
+                        this.setState({ isLoading: false });
+                    } else {
+                        this.setState({
+                            message:
+                                'Não foi possível conectar ao banco de dados',
+                        });
+                        this.setState({ isLoading: false });
+                    }
+                    console.log(error);
+                }
+            );
+        }
     }
 
     render() {
@@ -49,7 +84,7 @@ class Home extends Component {
                         </Link>
                     </div>
                     <div>
-                        <Link to="/Login">
+                        <Link onclick={() => this.Sair()} to="/Login">
                             <IoMdExit />
                         </Link>
                     </div>

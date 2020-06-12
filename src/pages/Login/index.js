@@ -13,6 +13,13 @@ class Login extends Component {
             pushTela: 'Home',
         };
     }
+    componentDidMount() {
+        localStorage.removeItem('UsuarioNome');
+        localStorage.removeItem('idLogado');
+        localStorage.removeItem('collaboratorCoin');
+        localStorage.removeItem('SaldoSkill');
+        localStorage.setItem('idLogado', 10);
+    }
 
     alteraLogin = e => {
         if (e.target.value === 'gestor') {

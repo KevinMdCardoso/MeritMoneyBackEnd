@@ -13,6 +13,10 @@ class Home extends Component {
         const SaldoSkill = localStorage.getItem('SaldoSkill');
         const UsuarioNome = localStorage.getItem('UsuarioNome');
 
+        // console.log(collaboratorCoin);
+        // console.log(SaldoSkill);
+        // console.log(UsuarioNome);
+
         if (
             UsuarioNome !== null &&
             SaldoSkill !== null &&
@@ -37,10 +41,11 @@ class Home extends Component {
             const response = Api.get(`usuario/${idLogado}`).then(
                 response => {
                     if (response.status === 200) {
-                        this.state.SaldoCollaborator =
-                            response.data.collaboratorCoin;
-                        this.state.SaldoSkill = response.data.skillCoin;
-                        this.state.UsuarioNome = response.data.nome;
+                        this.setState({
+                            SaldoCollaborator: response.data.collaboratorCoin,
+                            SaldoSkill: response.data.skillCoin,
+                            UsuarioNome: response.data.nome,
+                        });
                         localStorage.setItem(
                             'collaboratorCoin',
                             response.data.collaboratorCoin
@@ -72,14 +77,6 @@ class Home extends Component {
         }
     }
 
-    // Sair = () => {
-    //     console.log('delets');
-    //     localStorage.removeItem('UsuarioNome');
-    //     localStorage.removeItem('idLogado');
-    //     localStorage.removeItem('collaboratorCoin');
-    //     localStorage.removeItem('SaldoSkill');
-    // };
-
     render() {
         return (
             <Container>
@@ -104,7 +101,7 @@ class Home extends Component {
                         </Link>
                     </div>
                     <div>
-                        <Link onclick={() => this.Sair()} to="/Login">
+                        <Link to="/Login">
                             <IoMdExit />
                         </Link>
                     </div>

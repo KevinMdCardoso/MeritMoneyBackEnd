@@ -14,7 +14,7 @@ class Home extends Component {
     componentDidMount() {
         let rows = [];
         const idLogado = localStorage.getItem('idLogado');
-        const response = Api.get(`usuario`).then(
+        Api.get(`usuario`).then(
             response => {
                 for (const row in response.data) {
                     if (response.data[row].id != idLogado) {

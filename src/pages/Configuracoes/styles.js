@@ -45,6 +45,7 @@ export const Cabecalho = styled.div`
     width: 100%;
     margin-bottom: 20px;
     padding-top: 15px;
+
     h1 {
         padding-top: 10px;
         font-size: 18px;

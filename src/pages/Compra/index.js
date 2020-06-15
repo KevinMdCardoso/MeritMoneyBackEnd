@@ -142,45 +142,13 @@ class Compra extends Component {
                             <FaArrowLeft />
                             <p>Voltar</p>
                         </Link>
-
                         {linhas > 0 ? (
                             this.state.rows.map(this.renderRow)
                         ) : (
-                            <h1>Ingreço para cinema</h1>
+                            <Linha style={{ pointerEvents: 'none' }}>
+                                <CardGrande></CardGrande>
+                            </Linha>
                         )}
-
-                        {/* <Linha>
-                            <Card>
-                                <Link to={`/ConfirmaCompra/MomentoFeliz/30`}>
-                                    <FaGrinBeam />
-                                    <div>
-                                        <h1>Ingreço para cinema</h1>
-                                        <h1>Valor: 30</h1>
-                                    </div>
-                                </Link>
-                            </Card>
-
-                            <Card>
-                                <Link to={`/ConfirmaCompra/MomentoFeliz/30`}>
-                                    <FaGrinBeam />
-                                    <div>
-                                        <h1>Ingreço para cinema</h1>
-                                        <h1>Valor: 30</h1>
-                                    </div>{' '}
-                                </Link>
-                            </Card>
-                        </Linha>
-                        <Linha>
-                            <CardGrande>
-                                <Link to={`/ConfirmaCompra/MomentoFeliz/30`}>
-                                    <FaGrinBeam />
-                                    <div>
-                                        <h1>Ingreço para cinema</h1>
-                                        <h1>Valor: 30</h1>
-                                    </div>
-                                </Link>
-                            </CardGrande>
-                        </Linha> */}
                     </Tabela>
                 </Container>
             </>

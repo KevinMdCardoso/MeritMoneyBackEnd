@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 
 import MasterPage from '../../Components/MasterPageGestor';
 import { Container, InfoUsu, Formulario, Voltar } from './styles';
+import Api from '../../Services/api';
 
 class Doacao extends Component {
     constructor(props) {
@@ -25,6 +26,33 @@ class Doacao extends Component {
 
     alteraDescricao = e => {
         this.setState({ descricao: e.target.value });
+    };
+
+    criaMomennto = () => {
+        Api.post(`premio`, {
+            descricao: this.state.descricao,
+            id: 0,
+            nome: this.state.nome,
+            valor: this.state.valor,
+        }).then(
+            response => {
+                console.log(response.data);
+            },
+            error => {
+                if (error === 404) {
+                    this.setState({
+                        message: 'Não foi possível conectar ao portal',
+                    });
+                    this.setState({ isLoading: false });
+                } else {
+                    this.setState({
+                        message: 'Não foi possível conectar ao portal',
+                    });
+                    this.setState({ isLoading: false });
+                }
+                console.log(error);
+            }
+        );
     };
 
     render() {
@@ -61,7 +89,7 @@ class Doacao extends Component {
                             />
                         </Formulario>
                         <Link to={`/NovoMomentoFinaliza`}>
-                            <Button>Criar</Button>
+                            <Button onClick={this.criaMomennto}>Criar</Button>
                         </Link>
                     </form>
                 </Container>

@@ -112,12 +112,12 @@ export default function Routes() {
                     component={ConfirmaCompra}
                 />
                 <Route
-                    path="/ConfirmaNegarDoacao/:doador/:recebedor"
+                    path="/ConfirmaNegarDoacao/:idDoacao"
                     exact
                     component={ConfirmaNegarDoacao}
                 />
                 <Route
-                    path="/ConfirmaAceitarDoacao/:doador/:recebedor"
+                    path="/ConfirmaAceitarDoacao/:idDoacao"
                     exact
                     component={ConfirmaAceitarDoacao}
                 />

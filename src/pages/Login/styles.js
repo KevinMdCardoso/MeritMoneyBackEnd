@@ -53,11 +53,16 @@ export const Container = styled.div`
         }
 
         button {
+            color: ${clean};
+            font-size: 15px;
+            min-width: 65%;
+            height: 40px;
             margin: 20px 0;
+            margin-bottom: 27vh;
             background-color: ${primary};
             color: ${clean};
             border-radius: 20px;
-            width: 100%;
+
             border: 0 none;
             cursor: pointer;
 

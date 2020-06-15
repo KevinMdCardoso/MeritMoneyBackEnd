@@ -12,7 +12,13 @@ import { Container, InfoUsu, Formulario, Voltar } from './styles';
 class Doacao extends Component {
     constructor(props) {
         super(props);
-        this.state = { quantidadeDoado: 0, motivoDoado: '' };
+        this.state = { quantidadeDoado: 0, motivoDoado: '', moedasEmConta: 0 };
+    }
+
+    componentDidMount() {
+        this.setState({
+            moedasEmConta: localStorage.getItem('collaboratorCoin'),
+        });
     }
 
     alteraValor = e => {
@@ -23,7 +29,56 @@ class Doacao extends Component {
         this.setState({ motivoDoado: e.target.value });
     };
 
+    pegaDoador = () => {
+        const idLogado = localStorage.getItem('idLogado');
+        let usuario = [];
+        //consulta para pegar infos de usuario
+        const response = Api.get(`usuario/${idLogado}`).then(
+            response => {
+                if (response.status === 200) {
+                    usuario = response.data;
+                    usuario.collaboratorCoin =
+                        response.data.collaboratorCoin -
+                        this.state.quantidadeDoado;
+                    //Debitando valor da compra
+                    this.debitaConta(usuario);
+                }
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    };
+
+    debitaConta = usuario => {
+        const idLogado = localStorage.getItem('idLogado');
+        const response = Api.put(`usuario/${idLogado}`, {
+            id: usuario.id,
+            nome: usuario.nome,
+            login: usuario.login,
+            email: usuario.email,
+            senha: usuario.senha,
+            perfil: {
+                id: usuario.perfil.id,
+                nome: usuario.perfil.nome,
+            },
+            collaboratorCoin: usuario.collaboratorCoin,
+            skillCoin: usuario.skillCoin,
+        }).then(
+            response => {
+                localStorage.setItem(
+                    'collaboratorCoin',
+                    usuario.collaboratorCoin
+                );
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    };
+
     CriaDoacao = () => {
+        const idLogado = localStorage.getItem('idLogado');
         var data = new Date();
         const response = Api.post(`doacao`, {
             auditado: false,
@@ -31,12 +86,15 @@ class Doacao extends Component {
             qtdMoedas: this.state.quantidadeDoado,
             texto: this.state.motivoDoado,
             valido: true,
+            usuarioDoador: {
+                id: idLogado,
+            },
+            usuarioRecebedor: {
+                id: this.props.match.params.id,
+            },
         }).then(
             response => {
-                console.log(response.data);
-                // if (response.data) {
-                // } else {
-                // }
+                if (response.status === 201) this.pegaDoador();
             },
             error => {
                 if (error === 404) {
@@ -84,7 +142,9 @@ class Doacao extends Component {
                             />
                         </Formulario>
                         {this.state.quantidadeDoado > 0 &&
-                        this.state.motivoDoado.length > 0 ? (
+                        this.state.motivoDoado.length > 0 &&
+                        this.state.moedasEmConta >=
+                            this.state.quantidadeDoado ? (
                             <Link
                                 onClick={this.CriaDoacao}
                                 to={`/ConfirmaDoacao/${this.props.match.params.nome}/${this.state.quantidadeDoado}`}

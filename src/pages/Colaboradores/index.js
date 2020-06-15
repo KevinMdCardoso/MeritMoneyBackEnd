@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import React, { Component } from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -5,9 +6,46 @@ import { Container, Voltar } from './styles';
 
 import MasterPageGestor from '../../Components/MasterPageGestor';
 import Tabela from '../../Components/TabelaSimplesColaboradoresGestor';
+import Api from '../../Services/api';
 
 class Home extends Component {
-    state = {};
+    state = { rows: [] };
+
+    componentDidMount() {
+        let rows = [];
+        const idLogado = localStorage.getItem('idLogado');
+        const response = Api.get(`usuario`).then(
+            response => {
+                for (const row in response.data) {
+                    if (response.data[row].id != idLogado) {
+                        rows = [
+                            ...rows,
+                            this.createData(
+                                response.data[row].id,
+                                response.data[row].nome,
+                                response.data[row].perfil.nome
+                            ),
+                        ];
+                    }
+                }
+                this.setState({ rows: rows, idLogado: idLogado });
+            },
+            error => {
+                if (error === 404) {
+                    this.setState({
+                        message: 'Não foi possível conectar ao banco de dados',
+                    });
+                    this.setState({ isLoading: false });
+                } else {
+                    this.setState({
+                        message: 'Não foi possível conectar ao banco de dados',
+                    });
+                    this.setState({ isLoading: false });
+                }
+                console.log(error);
+            }
+        );
+    }
 
     createData = (idUsuario, nome, perfil) => {
         return {
@@ -18,13 +56,6 @@ class Home extends Component {
     };
 
     render() {
-        const rows = [
-            this.createData(1, 'Eduardo Pires Infra', 'Colaborador'),
-            this.createData(2, 'kevin Cardoso', 'Colaborador'),
-            this.createData(3, 'Jader Rampa', 'Colaborador'),
-            this.createData(4, 'Sergio Veio', 'Gestor'),
-        ];
-
         return (
             <>
                 <MasterPageGestor />
@@ -35,7 +66,7 @@ class Home extends Component {
                     </Link>
                 </Voltar>
                 <Container>
-                    <Tabela dados={rows} />
+                    <Tabela dados={this.state.rows} />
                 </Container>
             </>
         );

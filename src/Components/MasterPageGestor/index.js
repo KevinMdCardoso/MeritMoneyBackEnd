@@ -26,12 +26,14 @@ class Home extends Component {
 
     componentDidMount() {
         const UsuarioNome = localStorage.getItem('UsuarioNome');
+        console.log(UsuarioNome);
         if (UsuarioNome === null) {
             const idLogado = localStorage.getItem('idLogado');
             const response = Api.get(`usuario/${idLogado}`).then(
                 response => {
+                    console.log(response.data);
                     if (response.status === 200) {
-                        this.state.UsuarioNome = response.data.nome;
+                        this.setState({ UsuarioNome: response.data.nome });
                         localStorage.setItem('UsuarioNome', response.data.nome);
                     }
                 },
@@ -84,7 +86,7 @@ class Home extends Component {
                         </Link>
                     </div>
                     <div>
-                        <Link onclick={() => this.Sair()} to="/Login">
+                        <Link to="/Login">
                             <IoMdExit />
                         </Link>
                     </div>

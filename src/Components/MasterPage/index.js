@@ -3,19 +3,78 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaCoins, FaUserCircle } from 'react-icons/fa';
 import { Container, Saldo, Usuario, Menu } from './styles';
 import { IoMdExit } from 'react-icons/io';
-
+import Api from '../../Services/api';
 class Home extends Component {
-    state = {
-        SaldoSkill: 0,
-        SaldoCollaborator: 0,
-        UsuarioNome: '',
-    };
+    state = {};
 
     constructor(props) {
         super(props);
-        this.state.SaldoCollaborator = 40;
-        this.state.SaldoSkill = 75;
-        this.state.UsuarioNome = 'Kevin Cardoso';
+        const collaboratorCoin = localStorage.getItem('collaboratorCoin');
+        const SaldoSkill = localStorage.getItem('SaldoSkill');
+        const UsuarioNome = localStorage.getItem('UsuarioNome');
+
+        // console.log(collaboratorCoin);
+        // console.log(SaldoSkill);
+        // console.log(UsuarioNome);
+
+        if (
+            UsuarioNome !== null &&
+            SaldoSkill !== null &&
+            collaboratorCoin !== null
+        ) {
+            this.state.SaldoCollaborator = collaboratorCoin;
+            this.state.SaldoSkill = SaldoSkill;
+            this.state.UsuarioNome = UsuarioNome;
+        }
+    }
+
+    componentDidMount() {
+        const collaboratorCoin = localStorage.getItem('collaboratorCoin');
+        const SaldoSkill = localStorage.getItem('SaldoSkill');
+        const UsuarioNome = localStorage.getItem('UsuarioNome');
+        if (
+            UsuarioNome === null &&
+            SaldoSkill === null &&
+            collaboratorCoin === null
+        ) {
+            const idLogado = localStorage.getItem('idLogado');
+            const response = Api.get(`usuario/${idLogado}`).then(
+                response => {
+                    if (response.status === 200) {
+                        this.setState({
+                            SaldoCollaborator: response.data.collaboratorCoin,
+                            SaldoSkill: response.data.skillCoin,
+                            UsuarioNome: response.data.nome,
+                        });
+                        localStorage.setItem(
+                            'collaboratorCoin',
+                            response.data.collaboratorCoin
+                        );
+                        localStorage.setItem(
+                            'SaldoSkill',
+                            response.data.skillCoin
+                        );
+                        localStorage.setItem('UsuarioNome', response.data.nome);
+                    }
+                },
+                error => {
+                    if (error === 404) {
+                        this.setState({
+                            message:
+                                'Não foi possível conectar ao banco de dados',
+                        });
+                        this.setState({ isLoading: false });
+                    } else {
+                        this.setState({
+                            message:
+                                'Não foi possível conectar ao banco de dados',
+                        });
+                        this.setState({ isLoading: false });
+                    }
+                    console.log(error);
+                }
+            );
+        }
     }
 
     render() {

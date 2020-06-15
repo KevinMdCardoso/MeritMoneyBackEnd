@@ -108,10 +108,11 @@ export const Formulario = styled.div`
     input {
         border: 2px solid ${secundary};
         border-radius: 12px;
-        height: 40px;
+        min-height: 14%;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
         text-align: left;
+        padding-left: 10px;
         margin-bottom: 15px;
         width: 80%;
 

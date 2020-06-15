@@ -8,18 +8,78 @@ import Button from '@material-ui/core/Button';
 
 import MasterPage from '../../Components/MasterPageGestor';
 import { Container, Formulario, Voltar, Botoes, Moedas } from './styles';
+import Api from '../../Services/api';
 
 class DescriçaoColaborador extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            idUsuario: 1,
+            idUsuario: 0,
+            nome: '',
             login: '',
-            nome: 'kevin',
             senha: '',
+            email: '',
             moedasRecebidas: 18,
             moedasDoaveis: 13,
+            perfil: [],
+            perfilSelecionado: 0,
         };
+    }
+
+    componentDidMount() {
+        Api.get(`perfil`).then(
+            response => {
+                if (response.status === 200) {
+                    this.setState({
+                        perfil: response.data,
+                    });
+                }
+            },
+            error => {
+                if (error === 404) {
+                    this.setState({
+                        message: 'Não foi possível conectar ao banco de dados',
+                    });
+                    this.setState({ isLoading: false });
+                } else {
+                    this.setState({
+                        message: 'Não foi possível conectar ao banco de dados',
+                    });
+                    this.setState({ isLoading: false });
+                }
+                console.log(error);
+            }
+        );
+
+        Api.get(`usuario/${this.props.match.params.idUsuario}`).then(
+            response => {
+                if (response.status === 200) {
+                    this.setState({
+                        nome: response.data.nome,
+                        login: response.data.login,
+                        senha: response.data.senha,
+                        email: response.data.email,
+                        moedasRecebidas: response.data.skillCoin,
+                        moedasDoaveis: response.data.collaboratorCoin,
+                        perfilSelecionado: response.data.perfil.id,
+                    });
+                }
+            },
+            error => {
+                if (error === 404) {
+                    this.setState({
+                        message: 'Não foi possível conectar ao banco de dados',
+                    });
+                    this.setState({ isLoading: false });
+                } else {
+                    this.setState({
+                        message: 'Não foi possível conectar ao banco de dados',
+                    });
+                    this.setState({ isLoading: false });
+                }
+                console.log(error);
+            }
+        );
     }
 
     alteraLogin = e => {
@@ -32,6 +92,31 @@ class DescriçaoColaborador extends Component {
 
     alteraSenha = e => {
         this.setState({ senha: e.target.value });
+    };
+
+    alteraPerfil = e => {
+        this.setState({ perfilSelecionado: e.target.value });
+    };
+
+    alteraEmail = e => {
+        this.setState({ email: e.target.value });
+    };
+
+    alteraUsuario = () => {
+        Api.put(`usuario/${this.props.match.params.idUsuario}`, {
+            nome: this.state.nome,
+            login: this.state.login,
+            senha: this.state.senha,
+            email: this.state.email,
+            moedasRecebidas: this.state.skillCoin,
+            moedasDoaveis: this.state.collaboratorCoin,
+            perfil: { id: this.state.perfilSelecionado },
+        }).then(
+            response => {},
+            error => {
+                console.log(error);
+            }
+        );
     };
 
     render() {
@@ -65,11 +150,25 @@ class DescriçaoColaborador extends Component {
                                 value={this.state.senha}
                                 onChange={this.alteraSenha}
                             />
-                            <select id="perfis">
-                                <option value="Colaborador" selected>
-                                    Colaborador
-                                </option>
-                                <option value="Gestor">Gestor</option>
+                            <input
+                                type="text"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.alteraEmail}
+                            />
+                            <select id="perfis" onChange={this.alteraPerfil}>
+                                {this.state.perfil.map(perfil =>
+                                    this.state.perfilSelecionado ==
+                                    perfil.id ? (
+                                        <option value={perfil.id} selected>
+                                            {perfil.nome}
+                                        </option>
+                                    ) : (
+                                        <option value={perfil.id}>
+                                            {perfil.nome}
+                                        </option>
+                                    )
+                                )}
                             </select>
                         </Formulario>
                         <Moedas>
@@ -80,12 +179,14 @@ class DescriçaoColaborador extends Component {
                         </Moedas>
                         <Botoes>
                             <Link
-                                to={`/ConfirmaDeletarUsuario/${this.state.idUsuario}/${this.state.nome}`}
+                                to={`/ConfirmaDeletarUsuario/${this.props.match.params.idUsuario}/${this.state.nome}`}
                             >
                                 <Button>Deletar</Button>
                             </Link>
                             <Link to="/AlteracaoColaboradorFinaliza">
-                                <Button>Atualizar</Button>
+                                <Button onClick={this.alteraUsuario}>
+                                    Atualizar
+                                </Button>
                             </Link>
                         </Botoes>
                     </form>

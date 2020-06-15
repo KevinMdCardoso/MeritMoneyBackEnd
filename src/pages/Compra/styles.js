@@ -22,9 +22,9 @@ export const Container = styled.div`
 
 export const Tabela = styled.div`
     display: flex;
-    flex-direction: column;
     width: 65vw;
     min-height: 20vh;
+    flex-wrap: wrap;
 
     a {
         display: flex;
@@ -44,6 +44,22 @@ export const Linha = styled.div`
     flex-direction: row;
     background-color: ${clean};
     width: 100%;
+    height: 15vh;
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        color: ${dark};
+    }
+`;
+
+export const MeiaLinha = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: ${clean};
+    width: 50%;
     height: 15vh;
     a {
         display: flex;

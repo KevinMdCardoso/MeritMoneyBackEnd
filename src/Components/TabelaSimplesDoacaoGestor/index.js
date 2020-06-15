@@ -106,14 +106,14 @@ export default function SimpleTable(props) {
                             </TableCell>
                             <TableCell className={classes.centraliza}>
                                 <Link
-                                    to={`/ConfirmaNegarDoacao/${row.nomeDoador}/${row.nomeRecebedor}`}
+                                    to={`/ConfirmaNegarDoacao/${row.idDoacao}/`}
                                 >
                                     <FaPlus className={classes.svgRotacao} />
                                 </Link>
                             </TableCell>
                             <TableCell className={classes.centraliza}>
                                 <Link
-                                    to={`/ConfirmaAceitarDoacao/${row.nomeDoador}/${row.nomeRecebedor}`}
+                                    to={`/ConfirmaAceitarDoacao/${row.idDoacao}`}
                                 >
                                     <FaCheck className={classes.svg} />
                                 </Link>

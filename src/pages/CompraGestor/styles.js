@@ -22,9 +22,10 @@ export const Container = styled.div`
 
 export const Tabela = styled.div`
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     width: 65vw;
     min-height: 20vh;
+    flex-wrap: wrap;
 
     a {
         display: flex;
@@ -146,5 +147,21 @@ export const CardAddGrande = styled.div`
             color: ${clean};
             opacity: 0.8;
         }
+    }
+`;
+
+export const MeiaLinha = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: ${clean};
+    width: 50%;
+    height: 15vh;
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        color: ${dark};
     }
 `;

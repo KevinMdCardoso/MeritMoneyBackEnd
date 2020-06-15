@@ -4,6 +4,7 @@ import { FaQuestion } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import Button from '@material-ui/core/Button';
+import Api from '../../Services/api';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class ConfirmaNegarDoacao extends Component {
@@ -12,7 +13,17 @@ class ConfirmaNegarDoacao extends Component {
         super(props);
     }
 
+    deletaUsuario = () => {
+        Api.delete(`usuario/${this.props.match.params.idUsuario}`).then(
+            response => {},
+            error => {
+                console.log(error);
+            }
+        );
+    };
+
     render() {
+        console.log(this.props);
         return (
             <Container>
                 <form>
@@ -26,7 +37,9 @@ class ConfirmaNegarDoacao extends Component {
                             <Button>Voltar</Button>
                         </Link>
                         <Link to="/DeletarColaboradorFinalizada">
-                            <Button>Confirmar</Button>
+                            <Button onClick={this.deletaUsuario}>
+                                Confirmar
+                            </Button>
                         </Link>
                     </div>
                 </form>

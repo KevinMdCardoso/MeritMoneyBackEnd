@@ -10,8 +10,8 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: '',
-            senha: '',
+            login: 'kevin',
+            senha: '123456',
         };
     }
 
@@ -30,17 +30,62 @@ class Login extends Component {
         this.setState({ senha: e.target.value });
     };
 
+    ResetMoedasUsuario = usuario => {
+        Api.get(`parametro`).then(
+            response => {
+                if (response.status === 200) {
+                    for (let index = 0; index < response.data.length; index++) {
+                        if (
+                            response.data[index].nome ===
+                            'CollaboratorCoinMonth'
+                        ) {
+                            Api.put(`usuario/${usuario.id}`, {
+                                email: usuario.email,
+                                login: usuario.login,
+                                nome: usuario.nome,
+                                data: new Date(),
+                                perfil: {
+                                    id: usuario.perfil.id,
+                                },
+                                senha: usuario.senha,
+                                skillCoin: usuario.skillCoin,
+                                collaboratorCoin: parseInt(
+                                    response.data[index].valor
+                                ),
+                            }).then(
+                                response => {},
+                                error => {
+                                    console.log(error);
+                                }
+                            );
+                        }
+                    }
+                }
+            },
+            error => {}
+        );
+    };
+
     logar = () => {
         Api.get(`usuario/Logar/${this.state.login}/${this.state.senha}`).then(
             response => {
                 if (response.status === 200) {
-                    console.log(response);
                     if (response.data !== '') {
                         localStorage.setItem('idLogado', response.data.id);
                         if (response.data.perfil.nome === 'Gestor') {
                             history.push('/homeGestor');
                             window.location.reload(false);
                         } else {
+                            const dataAtual = new Date();
+                            const dataUsuario = new Date(response.data.data);
+
+                            if (
+                                dataUsuario.getMonth() < dataAtual.getMonth() ||
+                                dataUsuario.getFullYear() <
+                                    dataAtual.getFullYear()
+                            ) {
+                                this.ResetMoedasUsuario(response.data);
+                            }
                             history.push('/home');
                             window.location.reload(false);
                         }

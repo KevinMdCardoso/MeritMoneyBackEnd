@@ -107,7 +107,7 @@ export default function Routes() {
                     component={ConfirmaDoacao}
                 />
                 <Route
-                    path="/ConfirmaCompra/:momento/:valor"
+                    path="/ConfirmaCompra/:momento/:valor/:idMomento"
                     exact
                     component={ConfirmaCompra}
                 />

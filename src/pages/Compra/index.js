@@ -54,7 +54,7 @@ class Compra extends Component {
                     <Linha>
                         <CardGrande>
                             <Link
-                                to={`/ConfirmaCompra/${row.nome}/${row.valor}`}
+                                to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
                                 <FaGrinBeam />
                                 <div>
@@ -74,7 +74,7 @@ class Compra extends Component {
                             }}
                         >
                             <Link
-                                to={`/ConfirmaCompra/${row.nome}/${row.valor}`}
+                                to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
                                 <FaGrinBeam />
                                 <div>
@@ -92,7 +92,7 @@ class Compra extends Component {
                     <MeiaLinha>
                         <Card>
                             <Link
-                                to={`/ConfirmaCompra/${row.nome}/${row.valor}`}
+                                to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
                                 <FaGrinBeam />
                                 <div>
@@ -116,7 +116,7 @@ class Compra extends Component {
                             }}
                         >
                             <Link
-                                to={`/ConfirmaCompra/${row.nome}/${row.valor}`}
+                                to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
                                 <FaGrinBeam />
                                 <div>

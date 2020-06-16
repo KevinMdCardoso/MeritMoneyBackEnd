@@ -13,13 +13,29 @@ class ConfirmaCompra extends Component {
         super(props);
     }
 
-    enviaEmailSolicitandoPremio = email => {
-        console.log('Ainda não temos procedimento para envio de email.');
+    compra = () => {
+        const idLogado = localStorage.getItem('idLogado');
+        let usuario = [];
+        //consulta para pegar infos de usuario
+        const response = Api.get(`usuario/${idLogado}`).then(
+            response => {
+                if (response.status === 200) {
+                    usuario = response.data;
+                    usuario.skillCoin =
+                        response.data.skillCoin - this.props.match.params.valor;
+                    //Debitando valor da compra
+                    this.debitaConta(usuario);
+                }
+            },
+            error => {
+                console.log(error);
+            }
+        );
     };
 
     debitaConta = usuario => {
         const idLogado = localStorage.getItem('idLogado');
-        const response = Api.put(`usuario/${idLogado}`, {
+        Api.put(`usuario/${idLogado}`, {
             id: usuario.id,
             nome: usuario.nome,
             login: usuario.login,
@@ -35,7 +51,9 @@ class ConfirmaCompra extends Component {
             response => {
                 localStorage.setItem('SaldoSkill', usuario.skillCoin);
                 //Envio do email
-                this.enviaEmailSolicitandoPremio(usuario.email);
+                this.enviaEmailSolicitandoPremio(usuario);
+                //registra compra do premio
+                this.registraPremioSolicitado(idLogado);
             },
             error => {
                 console.log(error);
@@ -43,22 +61,68 @@ class ConfirmaCompra extends Component {
         );
     };
 
-    compra = () => {
-        console.log('teste');
-        const idLogado = localStorage.getItem('idLogado');
-        let usuario = [];
-        //consulta para pegar infos de usuario
-        const response = Api.get(`usuario/${idLogado}`).then(
+    enviaEmailSolicitandoPremio = usuario => {
+        const texto =
+            'Eu ' +
+            usuario.nome +
+            ' estou solicitando o prêmio ' +
+            this.props.match.params.momento +
+            ' como recompensa pelos bons serviços colaborativos evidenciados pelo CoopCoin.';
+
+        Api.get(`parametro`).then(
             response => {
                 if (response.status === 200) {
-                    usuario = response.data;
-                    usuario.skillCoin =
-                        response.data.skillCoin - this.props.match.params.valor;
-                    //Debitando valor da compra
-                    this.debitaConta(usuario);
+                    console.log(response);
+
+                    for (let index = 0; index < response.data.length; index++) {
+                        if (response.data[index].nome === 'EmailRH') {
+                            Api.get(
+                                `premio/EnviaEmail/${usuario.email}/${response.data[index].valor}/${texto}`
+                            ).then(
+                                response => {
+                                    if (response.status === 200) {
+                                        console.log(response);
+                                    }
+                                },
+                                error => {
+                                    console.log(error);
+                                }
+                            );
+                        }
+                    }
                 }
             },
             error => {
+                console.log(error);
+            }
+        );
+    };
+
+    registraPremioSolicitado = idLogado => {
+        Api.post(`usuario_premio`, {
+            data: new Date(),
+            premio: {
+                id: this.props.match.params.idMomento,
+            },
+            usuario: {
+                id: idLogado,
+            },
+        }).then(
+            response => {
+                console.log(response.data);
+            },
+            error => {
+                if (error === 404) {
+                    this.setState({
+                        message: 'Não foi possível conectar ao portal',
+                    });
+                    this.setState({ isLoading: false });
+                } else {
+                    this.setState({
+                        message: 'Não foi possível conectar ao portal',
+                    });
+                    this.setState({ isLoading: false });
+                }
                 console.log(error);
             }
         );

@@ -18,9 +18,11 @@ class Home extends Component {
         super(props);
 
         const UsuarioNome = localStorage.getItem('UsuarioNome');
+        const Imagem = localStorage.getItem('Imagem');
 
-        if (UsuarioNome !== null) {
+        if (UsuarioNome !== null || Imagem !== null) {
             this.state.UsuarioNome = UsuarioNome;
+            this.state.Imagem = Imagem;
         }
     }
 
@@ -33,8 +35,12 @@ class Home extends Component {
                 response => {
                     console.log(response.data);
                     if (response.status === 200) {
-                        this.setState({ UsuarioNome: response.data.nome });
+                        this.setState({
+                            UsuarioNome: response.data.nome,
+                            Imagem: response.data.img3,
+                        });
                         localStorage.setItem('UsuarioNome', response.data.nome);
+                        localStorage.setItem('Imagem', response.data.img3);
                     }
                 },
                 error => {
@@ -61,7 +67,11 @@ class Home extends Component {
         return (
             <Container>
                 <Usuario>
-                    <FaUserCircle />
+                    {this.state.Imagem > '' ? (
+                        <img src={this.state.Imagem} />
+                    ) : (
+                        <FaUserCircle />
+                    )}
                     <h1>{this.state.UsuarioNome}</h1>
                 </Usuario>
                 <Menu>

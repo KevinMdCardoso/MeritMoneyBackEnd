@@ -75,7 +75,11 @@ class Compra extends Component {
                     <Linha>
                         <CardAddGrande>
                             <Link to={`/DescriçaoMomento/${row.id}`}>
-                                <FaGrinBeam />
+                                {row.img > '' ? (
+                                    <img src={row.img} />
+                                ) : (
+                                    <FaGrinBeam />
+                                )}
                                 <div>
                                     <h1>{row.nome}</h1>
                                     <h1>Valor: {row.valor}</h1>
@@ -104,7 +108,11 @@ class Compra extends Component {
                     <MeiaLinha>
                         <Card>
                             <Link to={`/DescriçaoMomento/${row.id}`}>
-                                <FaGrinBeam />
+                                {row.img > '' ? (
+                                    <img src={row.img} />
+                                ) : (
+                                    <FaGrinBeam />
+                                )}
                                 <div>
                                     <h1>{row.nome}</h1>
                                     <h1>Valor: {row.valor}</h1>

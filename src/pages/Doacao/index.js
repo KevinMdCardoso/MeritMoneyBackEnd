@@ -19,6 +19,17 @@ class Doacao extends Component {
         this.setState({
             moedasEmConta: localStorage.getItem('collaboratorCoin'),
         });
+
+        Api.get(`usuario/${this.props.match.params.id}`).then(
+            response => {
+                if (response.status === 200) {
+                    this.setState({ imagem: response.data.img3 });
+                }
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     alteraValor = e => {
@@ -58,6 +69,9 @@ class Doacao extends Component {
             login: usuario.login,
             email: usuario.email,
             senha: usuario.senha,
+            data: usuario.data,
+            status: usuario.status,
+            img3: usuario.img3,
             perfil: {
                 id: usuario.perfil.id,
                 nome: usuario.perfil.nome,
@@ -126,7 +140,11 @@ class Doacao extends Component {
                 <Container>
                     <form>
                         <InfoUsu>
-                            <FaUserCircle />
+                            {this.state.imagem > '' ? (
+                                <img src={this.state.imagem} />
+                            ) : (
+                                <FaUserCircle />
+                            )}
                             <h2>{this.props.match.params.nome}</h2>
                         </InfoUsu>
                         <Formulario>

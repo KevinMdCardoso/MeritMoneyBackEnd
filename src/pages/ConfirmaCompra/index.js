@@ -40,6 +40,9 @@ class ConfirmaCompra extends Component {
             nome: usuario.nome,
             login: usuario.login,
             email: usuario.email,
+            data: usuario.data,
+            status: usuario.status,
+            img3: usuario.img3,
             senha: usuario.senha,
             perfil: {
                 id: usuario.perfil.id,

@@ -56,7 +56,11 @@ class Compra extends Component {
                             <Link
                                 to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
-                                <FaGrinBeam />
+                                {row.img > '' ? (
+                                    <img src={row.img} />
+                                ) : (
+                                    <FaGrinBeam />
+                                )}
                                 <div>
                                     <h1>{row.nome}</h1>
                                     <h1>Valor: {row.valor}</h1>
@@ -76,7 +80,11 @@ class Compra extends Component {
                             <Link
                                 to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
-                                <FaGrinBeam />
+                                {row.img > '' ? (
+                                    <img src={row.img} />
+                                ) : (
+                                    <FaGrinBeam />
+                                )}
                                 <div>
                                     <h1>{row.nome}</h1>
                                     <h1>Valor: {row.valor}</h1>
@@ -94,7 +102,11 @@ class Compra extends Component {
                             <Link
                                 to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
-                                <FaGrinBeam />
+                                {row.img > '' ? (
+                                    <img src={row.img} />
+                                ) : (
+                                    <FaGrinBeam />
+                                )}
                                 <div>
                                     <h1>{row.nome}</h1>
                                     <h1>Valor: {row.valor}</h1>
@@ -118,7 +130,11 @@ class Compra extends Component {
                             <Link
                                 to={`/ConfirmaCompra/${row.nome}/${row.valor}/${row.id}`}
                             >
-                                <FaGrinBeam />
+                                {row.img > '' ? (
+                                    <img src={row.img} />
+                                ) : (
+                                    <FaGrinBeam />
+                                )}
                                 <div>
                                     <h1>{row.nome}</h1>
                                     <h1>Valor: {row.valor}</h1>

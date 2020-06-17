@@ -78,6 +78,11 @@ export const Card = styled.div`
         width: 15%;
         height: 100%;
     }
+    img {
+        width: 20%;
+        height: 20%;
+        border-radius: 50%;
+    }
 
     &:hover {
         cursor: pointer;
@@ -107,6 +112,11 @@ export const CardAdd = styled.div`
     svg {
         width: 15%;
         height: 100%;
+    }
+
+    img {
+        width: 20%;
+        height: 20%;
     }
 
     &:hover {
@@ -139,6 +149,11 @@ export const CardAddGrande = styled.div`
         svg {
             width: 8%;
             height: 100%;
+        }
+
+        img {
+            width: 20%;
+            height: 20%;
         }
 
         &:hover {

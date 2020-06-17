@@ -30,8 +30,8 @@ class Login extends Component {
         this.setState({ senha: e.target.value });
     };
 
-    ResetMoedasUsuario = usuario => {
-        Api.get(`parametro`).then(
+    ResetMoedasUsuario = async usuario => {
+        await Api.get(`parametro`).then(
             response => {
                 if (response.status === 200) {
                     for (let index = 0; index < response.data.length; index++) {
@@ -44,6 +44,8 @@ class Login extends Component {
                                 login: usuario.login,
                                 nome: usuario.nome,
                                 data: new Date(),
+                                status: usuario.status, //true, //
+                                img3: usuario.img3,
                                 perfil: {
                                     id: usuario.perfil.id,
                                 },
@@ -53,7 +55,10 @@ class Login extends Component {
                                     response.data[index].valor
                                 ),
                             }).then(
-                                response => {},
+                                response => {
+                                    history.push('/home');
+                                    window.location.reload(false);
+                                },
                                 error => {
                                     console.log(error);
                                 }
@@ -66,8 +71,11 @@ class Login extends Component {
         );
     };
 
-    logar = () => {
-        Api.get(`usuario/Logar/${this.state.login}/${this.state.senha}`).then(
+    logar = async () => {
+        let carregando = false;
+        await Api.get(
+            `usuario/Logar/${this.state.login}/${this.state.senha}`
+        ).then(
             response => {
                 if (response.status === 200) {
                     if (response.data !== '') {
@@ -84,10 +92,14 @@ class Login extends Component {
                                 dataUsuario.getFullYear() <
                                     dataAtual.getFullYear()
                             ) {
+                                console.log('reset moedas');
                                 this.ResetMoedasUsuario(response.data);
+                                carregando = true;
                             }
-                            history.push('/home');
-                            window.location.reload(false);
+                            if (carregando === false) {
+                                history.push('/home');
+                                window.location.reload(false);
+                            }
                         }
                     } else {
                         alert('Senha/usuario errada.');

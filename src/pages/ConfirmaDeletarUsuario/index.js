@@ -14,11 +14,32 @@ class ConfirmaNegarDoacao extends Component {
     }
 
     deletaUsuario = () => {
-        Api.delete(`usuario/${this.props.match.params.idUsuario}`).then(
-            response => {},
-            error => {
-                console.log(error);
-            }
+        Api.get(`usuario/${this.props.match.params.idUsuario}`).then(
+            response => {
+                if (response.status === 200) {
+                    Api.put(`usuario/${this.props.match.params.idUsuario}`, {
+                        email: response.data.email,
+                        id: response.data.id,
+                        login: response.data.nome,
+                        nome: response.data.login,
+                        data: response.data.data,
+                        status: false,
+                        img3: response.data.img3,
+                        perfil: {
+                            id: response.data.perfil.id,
+                        },
+                        senha: response.data.senha,
+                        skillCoin: response.data.skillCoin,
+                        collaboratorCoin: response.data.collaboratorCoin,
+                    }).then(
+                        response => {},
+                        error => {
+                            console.log(error);
+                        }
+                    );
+                }
+            },
+            error => {}
         );
     };
 

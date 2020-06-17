@@ -24,6 +24,11 @@ export const Usuario = styled.div`
         width: 50%;
         height: 50%;
     }
+    img {
+        width: 30%;
+        height: 60%;
+        border-radius: 50%;
+    }
 
     div {
         display: flex;

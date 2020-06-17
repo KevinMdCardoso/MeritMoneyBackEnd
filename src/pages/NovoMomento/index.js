@@ -34,6 +34,7 @@ class Doacao extends Component {
             id: 0,
             nome: this.state.nome,
             valor: this.state.valor,
+            img: this.state.imagem,
         }).then(
             response => {
                 console.log(response.data);
@@ -53,6 +54,15 @@ class Doacao extends Component {
                 console.log(error);
             }
         );
+    };
+
+    handleImageChange = e => {
+        e.preventDefault();
+        let reader = new FileReader();
+        reader.onloadend = () => {
+            this.setState({ imagem: reader.result });
+        };
+        reader.readAsDataURL(e.target.files[0]);
     };
 
     render() {
@@ -82,10 +92,17 @@ class Doacao extends Component {
                                     onChange={this.alteraValor}
                                 />
                             </div>
+
                             <textarea
                                 type="number"
                                 placeholder="Descriçao"
                                 onChange={this.alteraDescricao}
+                            />
+                            <input
+                                accept="image/*"
+                                className="custom-file-input"
+                                type="file"
+                                onChange={e => this.handleImageChange(e)}
                             />
                         </Formulario>
                         <Link to={`/NovoMomentoFinaliza`}>

@@ -17,7 +17,10 @@ class Home extends Component {
         const response = Api.get(`usuario`).then(
             response => {
                 for (const row in response.data) {
-                    if (response.data[row].id != idLogado) {
+                    if (
+                        response.data[row].id != idLogado &&
+                        response.data[row].status === true
+                    ) {
                         rows = [
                             ...rows,
                             this.createData(

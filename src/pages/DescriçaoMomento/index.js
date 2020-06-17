@@ -70,12 +70,22 @@ class Doacao extends Component {
             nome: this.state.nome,
             valor: this.state.valor,
             descricao: this.state.descricao,
+            img: this.state.imagem,
         }).then(
             response => {},
             error => {
                 console.log(error);
             }
         );
+    };
+
+    handleImageChange = e => {
+        e.preventDefault();
+        let reader = new FileReader();
+        reader.onloadend = () => {
+            this.setState({ imagem: reader.result });
+        };
+        reader.readAsDataURL(e.target.files[0]);
     };
 
     render() {
@@ -112,6 +122,12 @@ class Doacao extends Component {
                                 value={this.state.descricao}
                                 placeholder="Descriçao"
                                 onChange={this.alteraDescricao}
+                            />
+                            <input
+                                accept="image/*"
+                                className="custom-file-input"
+                                type="file"
+                                onChange={e => this.handleImageChange(e)}
                             />
                         </Formulario>
                         <Botoes>

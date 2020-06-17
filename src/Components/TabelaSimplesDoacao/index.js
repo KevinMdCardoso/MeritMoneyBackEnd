@@ -39,6 +39,7 @@ const useStyles = makeStyles({
         width: '50px',
         height: '40px',
         color: dark,
+        borderRadius: '50%',
     },
     aumentaNome: {
         width: '66%',
@@ -71,7 +72,16 @@ export default function SimpleTable(props) {
                     {rows.map(row => (
                         <TableRow key={row.idUsuario}>
                             <TableCell>
-                                <FaUserCircle className={classes.svgNoHover} />
+                                {row.imagem > '' ? (
+                                    <img
+                                        className={classes.svgNoHover}
+                                        src={row.imagem}
+                                    />
+                                ) : (
+                                    <FaUserCircle
+                                        className={classes.svgNoHover}
+                                    />
+                                )}
                             </TableCell>
                             <TableCell className={classes.aumentaNome}>
                                 {row.nome}

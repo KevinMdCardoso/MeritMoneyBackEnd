@@ -18,12 +18,16 @@ class Home extends Component {
             response => {
                 for (const row in response.data) {
                     if (response.data[row].id != idLogado) {
-                        if (response.data[row].perfil.id === 1) {
+                        if (
+                            response.data[row].perfil.id === 1 &&
+                            response.data[row].status === true
+                        ) {
                             rows = [
                                 ...rows,
                                 this.createData(
                                     response.data[row].id,
-                                    response.data[row].nome
+                                    response.data[row].nome,
+                                    response.data[row].img3
                                 ),
                             ];
                         }
@@ -48,8 +52,8 @@ class Home extends Component {
         );
     }
 
-    createData = (idUsuario, nome) => {
-        return { idUsuario, nome };
+    createData = (idUsuario, nome, imagem) => {
+        return { idUsuario, nome, imagem };
     };
 
     render() {

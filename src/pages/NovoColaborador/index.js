@@ -19,6 +19,7 @@ class NovoColaborador extends Component {
             login: '',
             senha: '',
             email: '',
+            imagem: '',
             moedasRecebidas: 18,
             moedasDoaveis: 13,
             perfil: [],
@@ -80,6 +81,8 @@ class NovoColaborador extends Component {
             id: 0,
             login: this.state.nome,
             nome: this.state.login,
+            status: true,
+            img3: this.state.imagem,
             perfil: {
                 id: this.state.perfilSelecionado,
             },
@@ -87,9 +90,7 @@ class NovoColaborador extends Component {
             skillCoin: 0,
             collaboratorCoin: 0,
         }).then(
-            response => {
-                console.log(response.data);
-            },
+            response => {},
             error => {
                 if (error === 404) {
                     this.setState({
@@ -107,9 +108,16 @@ class NovoColaborador extends Component {
         );
     };
 
-    render() {
-        console.log('Render:' + this.state.perfil);
+    handleImageChange = e => {
+        e.preventDefault();
+        let reader = new FileReader();
+        reader.onloadend = () => {
+            this.setState({ imagem: reader.result });
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    };
 
+    render() {
         return (
             <>
                 <MasterPage />
@@ -145,6 +153,12 @@ class NovoColaborador extends Component {
                                 placeholder="Email"
                                 value={this.state.email}
                                 onChange={this.alteraEmail}
+                            />
+                            <input
+                                accept="image/*"
+                                className="custom-file-input"
+                                type="file"
+                                onChange={e => this.handleImageChange(e)}
                             />
                             <select id="perfis" onChange={this.alteraPerfil}>
                                 {this.state.perfil.map(perfil => (

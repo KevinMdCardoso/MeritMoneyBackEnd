@@ -96,13 +96,16 @@ class DetalhesDoacao extends Component {
         );
     };
 
-    atualizaAceiteConta = usuario => {
-        Api.put(`usuario/${this.state.idRecebedor}`, {
+    atualizaAceiteConta = async usuario => {
+        await Api.put(`usuario/${this.state.idRecebedor}`, {
             id: usuario.id,
             nome: usuario.nome,
             login: usuario.login,
             email: usuario.email,
             senha: usuario.senha,
+            data: usuario.data,
+            status: usuario.status,
+            img3: usuario.img3,
             perfil: {
                 id: usuario.perfil.id,
                 nome: usuario.perfil.nome,

@@ -59,6 +59,9 @@ class DescriçaoColaborador extends Component {
                         login: response.data.login,
                         senha: response.data.senha,
                         email: response.data.email,
+                        data: response.data.data,
+                        status: true,
+                        img3: response.data.img3,
                         moedasRecebidas: response.data.skillCoin,
                         moedasDoaveis: response.data.collaboratorCoin,
                         perfilSelecionado: response.data.perfil.id,
@@ -108,6 +111,9 @@ class DescriçaoColaborador extends Component {
             login: this.state.login,
             senha: this.state.senha,
             email: this.state.email,
+            data: this.state.data,
+            status: true,
+            img3: this.state.img3,
             moedasRecebidas: this.state.skillCoin,
             moedasDoaveis: this.state.collaboratorCoin,
             perfil: { id: this.state.perfilSelecionado },
@@ -117,6 +123,17 @@ class DescriçaoColaborador extends Component {
                 console.log(error);
             }
         );
+    };
+
+    handleImageChange = e => {
+        e.preventDefault();
+        let reader = new FileReader();
+        reader.onloadend = () => {
+            console.log(reader);
+
+            this.setState({ img3: reader.result });
+        };
+        reader.readAsDataURL(e.target.files[0]);
     };
 
     render() {
@@ -155,6 +172,12 @@ class DescriçaoColaborador extends Component {
                                 placeholder="Email"
                                 value={this.state.email}
                                 onChange={this.alteraEmail}
+                            />
+                            <input
+                                accept="image/*"
+                                className="custom-file-input"
+                                type="file"
+                                onChange={e => this.handleImageChange(e)}
                             />
                             <select id="perfis" onChange={this.alteraPerfil}>
                                 {this.state.perfil.map(perfil =>

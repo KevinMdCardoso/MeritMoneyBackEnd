@@ -29,9 +29,12 @@ export const Container = styled.div`
         border-radius: 20px;
 
         img {
-            height: 50px;
+            height: 100%;
+            width: 20%;
+            border-radius: 50%;
             margin: 30px 0;
         }
+
         textarea {
             margin-bottom: 10px;
             border: 2px solid ${secundary};

@@ -161,8 +161,8 @@ class Doacao extends Component {
                         </Formulario>
                         {this.state.quantidadeDoado > 0 &&
                         this.state.motivoDoado.length > 0 &&
-                        this.state.moedasEmConta >=
-                            this.state.quantidadeDoado ? (
+                        parseInt(this.state.quantidadeDoado) <=
+                            parseInt(this.state.moedasEmConta) ? (
                             <Link
                                 onClick={this.CriaDoacao}
                                 to={`/ConfirmaDoacao/${this.props.match.params.nome}/${this.state.quantidadeDoado}`}

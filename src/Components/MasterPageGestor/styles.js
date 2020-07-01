@@ -10,6 +10,10 @@ export const Container = styled.div`
     color: ${clean};
     height: 20vh;
     width: 100%;
+    padding: 0px;
+    box-shadow: 5px 10px #888888;
+
+    border-bottom: 2px solid #888888;
 `;
 
 export const Usuario = styled.div`
@@ -24,9 +28,10 @@ export const Usuario = styled.div`
         width: 50%;
         height: 50%;
     }
+
     img {
-        width: 30%;
-        height: 60%;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
     }
 

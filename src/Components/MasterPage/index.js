@@ -14,10 +14,7 @@ class Home extends Component {
         const SaldoSkill = localStorage.getItem('SaldoSkill');
         const UsuarioNome = localStorage.getItem('UsuarioNome');
         const Imagem = localStorage.getItem('Imagem');
-        // console.log(collaboratorCoin);
-        // console.log(SaldoSkill);
-        // console.log(UsuarioNome);
-        // console.log(Imagem);
+
         if (
             UsuarioNome !== null &&
             SaldoSkill !== null &&
@@ -36,11 +33,6 @@ class Home extends Component {
         const SaldoSkill = localStorage.getItem('SaldoSkill');
         const UsuarioNome = localStorage.getItem('UsuarioNome');
         const Imagem = localStorage.getItem('Imagem');
-
-        // console.log(collaboratorCoin);
-        // console.log(SaldoSkill);
-        // console.log(UsuarioNome);
-        // console.log(Imagem);
 
         if (
             UsuarioNome === null ||
@@ -103,11 +95,13 @@ class Home extends Component {
                 </Usuario>
                 <Saldo>
                     <div>
-                        <FaCoins />
+                        <p>Doaveis:</p>
                         <h1>{this.state.SaldoCollaborator}</h1>
                     </div>
+                </Saldo>
+                <Saldo>
                     <div>
-                        <FaCoins />
+                        <p>Recebidas:</p>
                         <h1>{this.state.SaldoSkill}</h1>
                     </div>
                 </Saldo>

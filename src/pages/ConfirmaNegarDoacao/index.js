@@ -15,12 +15,13 @@ class ConfirmaNegarDoacao extends Component {
     state = { doador: '', recebedor: '', textoAuditado: '' };
 
     componentDidMount() {
+        console.log(this.props.match.params.idDoacao);
         Api.get(`doacao/${this.props.match.params.idDoacao}`).then(
             response => {
                 if (response.status === 200) {
                     console.log(response);
                     this.setState({
-                        doaçao: response.data,
+                        doacao: response.data,
                         idDoador: response.data.usuarioDoador.id,
                         doador: response.data.usuarioDoador.nome,
                         recebedor: response.data.usuarioRecebedor.nome,
@@ -91,14 +92,14 @@ class ConfirmaNegarDoacao extends Component {
 
     negaDoacao = () => {
         Api.put(`doacao/${this.props.match.params.idDoacao}`, {
-            texto: this.state.doaçao.texto,
-            qtdMoedas: this.state.doaçao.qtdMoedas,
+            texto: this.state.doacao.texto,
+            qtdMoedas: this.state.doacao.qtdMoedas,
             auditado: true,
             textoAuditado: this.state.textoAuditado,
             valido: false,
-            usuarioDoador: this.state.doaçao.usuarioDoador,
-            usuarioRecebedor: this.state.doaçao.usuarioRecebedor,
-            data: this.state.doaçao.data,
+            usuarioDoador: this.state.doacao.usuarioDoador,
+            usuarioRecebedor: this.state.doacao.usuarioRecebedor,
+            data: this.state.doacao.data,
         }).then(
             response => {
                 if (response.status === 201) {

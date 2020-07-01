@@ -95,6 +95,12 @@ export const SetaValor = styled.div`
         width: 25px;
         height: 25px;
     }
+
+    img {
+        width: 50px;
+        height: 40px;
+        border-radius: 50%;
+    }
 `;
 
 export const Perfil = styled.div`
@@ -106,6 +112,11 @@ export const Perfil = styled.div`
     svg {
         width: 65px;
         height: 65px;
+    }
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
     }
 `;
 

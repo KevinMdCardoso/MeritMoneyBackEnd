@@ -19,7 +19,7 @@ class Home extends Component {
                 for (const row in response.data) {
                     if (response.data[row].id != idLogado) {
                         if (
-                            response.data[row].perfil.id === 1 &&
+                            response.data[row].perfil.nome === 'Colaborador' &&
                             response.data[row].status === true
                         ) {
                             rows = [

@@ -155,6 +155,10 @@ class NovoColaborador extends Component {
                                 onChange={this.alteraEmail}
                             />
                             <input
+                                style={{
+                                    paddingLeft: '24%',
+                                    border: '0px solid #008575',
+                                }}
                                 accept="image/*"
                                 className="custom-file-input"
                                 type="file"

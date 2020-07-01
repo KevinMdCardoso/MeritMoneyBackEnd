@@ -10,6 +10,10 @@ export const Container = styled.div`
     color: ${clean};
     height: 20vh;
     width: 100%;
+    padding: 0px;
+    box-shadow: 5px 10px #888888;
+
+    border-bottom: 2px solid #888888;
 `;
 
 export const Usuario = styled.div`
@@ -26,8 +30,8 @@ export const Usuario = styled.div`
     }
 
     img {
-        width: 30%;
-        height: 60%;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
     }
 
@@ -42,7 +46,7 @@ export const Saldo = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 55vw;
+    width: 26vw;
     height: 100%;
 
     div {
@@ -55,6 +59,11 @@ export const Saldo = styled.div`
 
     h1 {
         margin-left: 25px;
+    }
+
+    p {
+        font-size: 24px;
+        white-space: nowrap;
     }
 `;
 

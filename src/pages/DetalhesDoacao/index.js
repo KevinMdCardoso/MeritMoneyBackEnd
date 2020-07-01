@@ -34,8 +34,10 @@ class DetalhesDoacao extends Component {
                         doaçao: response.data,
                         idDoador: response.data.usuarioDoador.id,
                         doador: response.data.usuarioDoador.nome,
-                        recebedor: response.data.usuarioRecebedor.nome,
+                        imgDoador: response.data.usuarioDoador.img3,
                         idRecebedor: response.data.usuarioRecebedor.id,
+                        recebedor: response.data.usuarioRecebedor.nome,
+                        imgRecebedor: response.data.usuarioRecebedor.img3,
                         moedasDoadas: response.data.qtdMoedas,
                         Motivo: response.data.texto,
                     });
@@ -134,18 +136,24 @@ class DetalhesDoacao extends Component {
                     <Detalhes>
                         <Cabecalho>
                             <Perfil>
-                                <FaUserCircle />
+                                {this.state.imgDoador > '' ? (
+                                    <img src={this.state.imgDoador} />
+                                ) : (
+                                    <FaUserCircle />
+                                )}
+
                                 <h1>{this.state.doador}</h1>
                             </Perfil>
                             <SetaValor>
                                 <FaArrowRight />
-                                <p>
-                                    Doado {this.state.moedasDoadas}{' '}
-                                    collaboratorCoin
-                                </p>
+                                <p>Doado {this.state.moedasDoadas} </p>
                             </SetaValor>
                             <Perfil>
-                                <FaUserCircle />
+                                {this.state.imgRecebedor > '' ? (
+                                    <img src={this.state.imgRecebedor} />
+                                ) : (
+                                    <FaUserCircle />
+                                )}
                                 <h1>{this.state.recebedor}</h1>
                             </Perfil>
                         </Cabecalho>
